@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import { useParams, redirect, useNavigate } from "react-router-dom";
+import useStore from "./store";
 
 useParams;
 
-const NewEntry = ({ categories, addEntry }) => {
+const NewEntry = () => {
+  const { categories, addEntry } = useStore((state) => ({
+    categories: state.categories,
+    addEntry: state.addEntry,
+  }));
+
+
+
   const nav = useNavigate();
   const { cat_id } = useParams();
   const cat = categories.find((c) => c._id == cat_id);
